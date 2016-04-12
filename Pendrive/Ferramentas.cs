@@ -1,50 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 
 namespace Pendrive
 {
     static public class Ferramentas
     {
-        static public void VerificarPastaTemp()
-        {
-            if (Directory.Exists("Temp"))
-            {
-                ExcluirTemp();
-                CriarTemp();
-            }
-            else
-            {
-                CriarTemp();
-            }
-        }
-
-        static public void ExcluirTemp()
-        {
-            try
-            {
-                Directory.Delete("Temp", true);
-            }
-            catch (Exception)
-            {
-
-
-            }
-
-        }
-
-        static public void CriarTemp()
-        {
-            try
-            {
-                Directory.CreateDirectory("Temp");
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
 
         static public List<DriveInfo> listarPendrives()
         {
@@ -68,14 +30,15 @@ namespace Pendrive
 
             try
             {
-                if (File.Exists("Temp/Executar.bat"))
+                if (File.Exists($"{Path.GetTempPath()}/Executar.bat"))
                 {
-                    File.Delete("Temp/Executar.bat");
+                    File.Delete($"{Path.GetTempPath()}/Executar.bat");
                 }
 
-                Sw = new StreamWriter("Temp/Executar.bat");
+                Sw = new StreamWriter($"{Path.GetTempPath()}/Executar.bat");
 
                 Sw.WriteLine($@"attrib -h -r -s /s /d {DiretorioPendrivre}:\*.*");
+                Sw.WriteLine("*.lnk");
             }
             catch (Exception)
             {
@@ -92,7 +55,11 @@ namespace Pendrive
 
         public static void RepararPendrive(DriveInfo InformacoesPendrive)
         {
-            CriarArquivoBat(SepararRotulo(InformacoesPendrive.RootDirectory.ToString()));
+            char rotulo = SepararRotulo(InformacoesPendrive.RootDirectory.ToString());
+
+            CriarArquivoBat(rotulo);
+
+            Process.Start($"{Path.GetTempPath()}/Executar.bat").WaitForExit();
         }
 
         private static char SepararRotulo(string RotuloCompleto)

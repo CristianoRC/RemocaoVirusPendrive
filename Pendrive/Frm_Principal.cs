@@ -22,8 +22,6 @@ namespace Pendrive
 
         private void Frm_Principal_Load(object sender, EventArgs e)
         {
-            Ferramentas.VerificarPastaTemp();
-
             AtualizarListaDePendrives();
         }
 
@@ -91,7 +89,22 @@ namespace Pendrive
 
         private void Btm_Reparar_Click(object sender, EventArgs e)
         {
-            Ferramentas.RepararPendrive(PendriveAtual);
+
+            if (combo_Pendrive.Items.Count != 0)
+            {
+                if (PendriveAtual.IsReady)
+                {
+                    Ferramentas.RepararPendrive(PendriveAtual);
+                }
+                else
+                {
+                    MessageBox.Show("Insira um pendrive", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Insira um pendrive", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
