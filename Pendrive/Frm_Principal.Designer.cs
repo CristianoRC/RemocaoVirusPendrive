@@ -34,6 +34,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.Txt_NomePendrive = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Btm_Reparar = new System.Windows.Forms.Button();
             this.Lbl_Utilizado = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.Lbl_Livre = new System.Windows.Forms.Label();
@@ -44,7 +45,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Lbl_SistemaDeArquivos = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.Btm_Reparar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -109,6 +109,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(369, 240);
             this.panel1.TabIndex = 4;
+            // 
+            // Btm_Reparar
+            // 
+            this.Btm_Reparar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btm_Reparar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btm_Reparar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Btm_Reparar.Location = new System.Drawing.Point(6, 174);
+            this.Btm_Reparar.Name = "Btm_Reparar";
+            this.Btm_Reparar.Size = new System.Drawing.Size(352, 37);
+            this.Btm_Reparar.TabIndex = 16;
+            this.Btm_Reparar.Text = "Desinfectar Pendrive";
+            this.Btm_Reparar.UseVisualStyleBackColor = true;
+            this.Btm_Reparar.Click += new System.EventHandler(this.Btm_Reparar_Click);
             // 
             // Lbl_Utilizado
             // 
@@ -190,7 +203,7 @@
             // 
             this.Lbl_SistemaDeArquivos.AutoSize = true;
             this.Lbl_SistemaDeArquivos.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_SistemaDeArquivos.Location = new System.Drawing.Point(317, 9);
+            this.Lbl_SistemaDeArquivos.Location = new System.Drawing.Point(124, 114);
             this.Lbl_SistemaDeArquivos.Name = "Lbl_SistemaDeArquivos";
             this.Lbl_SistemaDeArquivos.Size = new System.Drawing.Size(0, 15);
             this.Lbl_SistemaDeArquivos.TabIndex = 7;
@@ -199,22 +212,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(196, 8);
+            this.label1.Location = new System.Drawing.Point(3, 113);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(121, 15);
             this.label1.TabIndex = 6;
             this.label1.Text = "Sistema de Arquivos:";
-            // 
-            // Btm_Reparar
-            // 
-            this.Btm_Reparar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btm_Reparar.Location = new System.Drawing.Point(6, 174);
-            this.Btm_Reparar.Name = "Btm_Reparar";
-            this.Btm_Reparar.Size = new System.Drawing.Size(352, 37);
-            this.Btm_Reparar.TabIndex = 16;
-            this.Btm_Reparar.Text = "Reparar";
-            this.Btm_Reparar.UseVisualStyleBackColor = true;
-            this.Btm_Reparar.Click += new System.EventHandler(this.Btm_Reparar_Click);
             // 
             // Frm_Principal
             // 

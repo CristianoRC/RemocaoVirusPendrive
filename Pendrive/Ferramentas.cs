@@ -7,7 +7,6 @@ namespace Pendrive
 {
     static public class Ferramentas
     {
-
         static public List<DriveInfo> listarPendrives()
         {
             List<DriveInfo> ListaDePendrives = new List<DriveInfo>();
@@ -38,7 +37,7 @@ namespace Pendrive
                 Sw = new StreamWriter($"{Path.GetTempPath()}/Executar.bat");
 
                 Sw.WriteLine($@"attrib -h -r -s /s /d {DiretorioPendrivre}:\*.*");
-                Sw.WriteLine("*.lnk");
+                Sw.WriteLine($@"del {DiretorioPendrivre}:\*.lnk .vbs. .js .com /f /q");
             }
             catch (Exception)
             {
@@ -59,7 +58,12 @@ namespace Pendrive
 
             CriarArquivoBat(rotulo);
 
-            Process.Start($"{Path.GetTempPath()}/Executar.bat").WaitForExit();
+            ProcessStartInfo Processo = new ProcessStartInfo();
+
+            Processo.FileName = $"{Path.GetTempPath()}/Executar.bat";
+            Processo.WindowStyle = ProcessWindowStyle.Hidden;
+
+            Process.Start(Processo).WaitForExit();
         }
 
         private static char SepararRotulo(string RotuloCompleto)
@@ -75,5 +79,6 @@ namespace Pendrive
 
             return saida;
         }
+
     }
 }
