@@ -64,6 +64,8 @@ namespace Pendrive
             Processo.WindowStyle = ProcessWindowStyle.Hidden;
 
             Process.Start(Processo).WaitForExit();
+
+            EsconderDiretorio(rotulo);
         }
 
         private static char SepararRotulo(string RotuloCompleto)
@@ -80,5 +82,10 @@ namespace Pendrive
             return saida;
         }
 
+        private static void EsconderDiretorio(char DiretorioPendrivre)
+        {
+            DirectoryInfo diretorio = Directory.CreateDirectory($@"{DiretorioPendrivre}:\System Volume Information");
+            diretorio.Attributes = FileAttributes.Hidden;
+        }
     }
 }
