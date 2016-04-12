@@ -61,5 +61,52 @@ namespace Pendrive
 
             return ListaDePendrives;
         }
+
+        static private void CriarArquivoBat(char DiretorioPendrivre)
+        {
+            StreamWriter Sw = null;
+
+            try
+            {
+                if (File.Exists("Temp/Executar.bat"))
+                {
+                    File.Delete("Temp/Executar.bat");
+                }
+
+                Sw = new StreamWriter("Temp/Executar.bat");
+
+                Sw.WriteLine($@"attrib -h -r -s /s /d {DiretorioPendrivre}:\*.*");
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                if (Sw != null)
+                {
+                    Sw.Close();
+                }
+            }
+        }
+
+        public static void RepararPendrive(DriveInfo InformacoesPendrive)
+        {
+            CriarArquivoBat(SepararRotulo(InformacoesPendrive.RootDirectory.ToString()));
+        }
+
+        private static char SepararRotulo(string RotuloCompleto)
+        {
+            char saida;
+
+            string[] Linha = new string[2];
+
+            Linha = RotuloCompleto.Split(':');
+
+            saida = Linha[0].ToCharArray()[0];
+
+
+            return saida;
+        }
     }
 }

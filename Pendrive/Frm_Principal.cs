@@ -13,6 +13,7 @@ namespace Pendrive
     public partial class Frm_Principal : Form
     {
         List<DriveInfo> ListaDePendrives = new List<DriveInfo>();
+        DriveInfo PendriveAtual;
 
         public Frm_Principal()
         {
@@ -32,10 +33,10 @@ namespace Pendrive
 
             ListaDePendrives = Ferramentas.listarPendrives();
 
+            combo_Pendrive.Items.Clear();
+
             foreach (var item in ListaDePendrives)
             {
-                combo_Pendrive.Items.Clear();
-
                 combo_Pendrive.Items.Add(item.RootDirectory.ToString());
             }
 
@@ -50,6 +51,26 @@ namespace Pendrive
             }
         }
 
+        private void AtualizarLabels(DriveInfo InformacoesPendrive)
+        {
+            Lbl_Nome.Text = InformacoesPendrive.VolumeLabel.ToLower();
+            Lbl_Livre.Text = $"{ConverterEmGigabytes(InformacoesPendrive.AvailableFreeSpace).ToString("0.00")} GB";
+            Lbl_SistemaDeArquivos.Text = InformacoesPendrive.DriveFormat;
+            Lbl_TamanhoTotal.Text = $"{ConverterEmGigabytes(InformacoesPendrive.TotalSize).ToString("0.00")} GB";
+
+            float Utilizado = ConverterEmGigabytes(InformacoesPendrive.TotalSize) - ConverterEmGigabytes(InformacoesPendrive.AvailableFreeSpace);
+
+            Lbl_Utilizado.Text = $"{Utilizado.ToString("0.00")} GB";
+
+
+            PendriveAtual = InformacoesPendrive;
+        }
+
+        static float ConverterEmGigabytes(float bytes)
+        {
+            return (bytes / 1073741824);
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             AtualizarListaDePendrives();
@@ -62,8 +83,15 @@ namespace Pendrive
                 if (item.RootDirectory.ToString() == combo_Pendrive.Text)
                 {
                     Txt_NomePendrive.Text = item.VolumeLabel.ToString();
+
+                    AtualizarLabels(item);
                 }
             }
+        }
+
+        private void Btm_Reparar_Click(object sender, EventArgs e)
+        {
+            Ferramentas.RepararPendrive(PendriveAtual);
         }
     }
 }
