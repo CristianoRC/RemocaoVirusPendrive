@@ -1,91 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-
-namespace Pendrive
+﻿namespace Pendrive
 {
-    static public class Ferramentas
+    internal static class Ferramentas
     {
-        static public List<DriveInfo> listarPendrives()
-        {
-            List<DriveInfo> ListaDePendrives = new List<DriveInfo>();
-
-            var Drives = DriveInfo.GetDrives();
-            foreach (var driver in Drives)
-            {
-                if (driver.IsReady && (driver.DriveType == DriveType.Removable))
-                {
-                    ListaDePendrives.Add(driver);
-                }
-            }
-
-            return ListaDePendrives;
-        }
-
-        static private void CriarArquivoBat(char DiretorioPendrivre)
-        {
-            StreamWriter Sw = null;
-
-            try
-            {
-                if (File.Exists($"{Path.GetTempPath()}/Executar.bat"))
-                {
-                    File.Delete($"{Path.GetTempPath()}/Executar.bat");
-                }
-
-                Sw = new StreamWriter($"{Path.GetTempPath()}/Executar.bat");
-
-                Sw.WriteLine($@"attrib -h -r -s /s /d {DiretorioPendrivre}:\*.*");
-                Sw.WriteLine($@"del {DiretorioPendrivre}:\*.lnk .vbs. .js .com /f /q");
-            }
-            catch (Exception)
-            {
-
-            }
-            finally
-            {
-                if (Sw != null)
-                {
-                    Sw.Close();
-                }
-            }
-        }
-
-        public static void RepararPendrive(DriveInfo InformacoesPendrive)
-        {
-            char rotulo = SepararRotulo(InformacoesPendrive.RootDirectory.ToString());
-
-            CriarArquivoBat(rotulo);
-
-            ProcessStartInfo Processo = new ProcessStartInfo();
-
-            Processo.FileName = $"{Path.GetTempPath()}/Executar.bat";
-            Processo.WindowStyle = ProcessWindowStyle.Hidden;
-
-            Process.Start(Processo).WaitForExit();
-
-            EsconderDiretorio(rotulo);
-        }
-
-        private static char SepararRotulo(string RotuloCompleto)
+        internal static char SepararRotulo(string RotuloCompleto)
         {
             char saida;
 
-            string[] Linha = new string[2];
+            var Linha = new string[2];
 
             Linha = RotuloCompleto.Split(':');
 
             saida = Linha[0].ToCharArray()[0];
 
-
             return saida;
         }
 
-        private static void EsconderDiretorio(char DiretorioPendrivre)
+        internal static float ConverterEmGigabytes(float bytes)
         {
-            DirectoryInfo diretorio = Directory.CreateDirectory($@"{DiretorioPendrivre}:\System Volume Information");
-            diretorio.Attributes = FileAttributes.Hidden;
+            return (bytes / 1073741824);
         }
     }
 }

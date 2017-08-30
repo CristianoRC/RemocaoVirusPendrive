@@ -10,14 +10,14 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Cristiano Raffi Cunha")]
 [assembly: AssemblyProduct("Pendrive")]
-[assembly: AssemblyCopyright("Copyright © Cristiano Cunha  2016")]
+[assembly: AssemblyCopyright("Copyright © Cristiano Cunha  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Definir ComVisible como false torna invisíveis os tipos neste assembly
 // para componentes COM.  Caso precise acessar um tipo neste assembly a partir de 
 // COM, defina o atributo ComVisible como true nesse tipo.
-[assembly: ComVisible(false)]
+[assembly: ComVisible(true)]
 
 // O GUID a seguir será destinado à ID de typelib se este projeto for exposto para COM
 [assembly: Guid("6324002a-95cd-4833-b0d5-b509c240584e")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // É possível especificar todos os valores ou usar como padrão os Números da Versão e da Revisão 
 // utilizando o "*" como mostrado abaixo:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.1.0.0")]
+[assembly: AssemblyFileVersion("1.1.0.0")]

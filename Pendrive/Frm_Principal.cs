@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
 
@@ -7,8 +6,7 @@ namespace Pendrive
 {
     public partial class Frm_Principal : Form
     {
-        List<DriveInfo> ListaDePendrives = new List<DriveInfo>();
-        DriveInfo PendriveAtual;
+        Pendrive pendrive = new Pendrive();
 
         public Frm_Principal()
         {
@@ -17,18 +15,45 @@ namespace Pendrive
 
         private void Frm_Principal_Load(object sender, EventArgs e)
         {
-            AtualizarListaDePendrives();
+            AtualizarComboBoxPendrives();
         }
 
-        private void AtualizarListaDePendrives()
+        private void button1_Click(object sender, EventArgs e)
         {
-            ListaDePendrives.Clear();
+            AtualizarComboBoxPendrives();
+        }
 
-            ListaDePendrives = Ferramentas.listarPendrives();
+        private void combo_Pendrive_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (var item in Pendrive.listar())
+            {
+                if (item.RootDirectory.ToString() == combo_Pendrive.Text)
+                {
+                    Txt_NomePendrive.Text = item.VolumeLabel.ToString();
 
-            combo_Pendrive.Items.Clear();
+                    AtualizarLabels(item);
 
-            foreach (var item in ListaDePendrives)
+                    pendrive.Informacoes = item;
+                }
+            }
+        }
+
+        private void Btm_Reparar_Click(object sender, EventArgs e)
+        {
+            if (combo_Pendrive.Items.Count != 0 && pendrive.Informacoes.IsReady)
+            {
+                pendrive.Reparar();
+            }
+            else
+            {
+                MessageBox.Show("Insira um pendrive!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
+        private void AtualizarComboBoxPendrives()
+        {
+            foreach (var item in Pendrive.listar())
             {
                 combo_Pendrive.Items.Add(item.RootDirectory.ToString());
             }
@@ -47,61 +72,13 @@ namespace Pendrive
         private void AtualizarLabels(DriveInfo InformacoesPendrive)
         {
             Lbl_Nome.Text = InformacoesPendrive.VolumeLabel.ToLower();
-            Lbl_Livre.Text = $"{ConverterEmGigabytes(InformacoesPendrive.AvailableFreeSpace).ToString("0.00")} GB";
+            Lbl_Livre.Text = $"{Ferramentas.ConverterEmGigabytes(InformacoesPendrive.AvailableFreeSpace).ToString("0.00")} GB";
             Lbl_SistemaDeArquivos.Text = InformacoesPendrive.DriveFormat;
-            Lbl_TamanhoTotal.Text = $"{ConverterEmGigabytes(InformacoesPendrive.TotalSize).ToString("0.00")} GB";
+            Lbl_TamanhoTotal.Text = $"{Ferramentas.ConverterEmGigabytes(InformacoesPendrive.TotalSize).ToString("0.00")} GB";
 
-            float Utilizado = ConverterEmGigabytes(InformacoesPendrive.TotalSize) - ConverterEmGigabytes(InformacoesPendrive.AvailableFreeSpace);
+            var Utilizado = Ferramentas.ConverterEmGigabytes(InformacoesPendrive.TotalSize) - Ferramentas.ConverterEmGigabytes(InformacoesPendrive.AvailableFreeSpace);
 
             Lbl_Utilizado.Text = $"{Utilizado.ToString("0.00")} GB";
-
-
-            PendriveAtual = InformacoesPendrive;
-        }
-
-        static float ConverterEmGigabytes(float bytes)
-        {
-            return (bytes / 1073741824);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            AtualizarListaDePendrives();
-        }
-
-        private void combo_Pendrive_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            foreach (var item in ListaDePendrives)
-            {
-                if (item.RootDirectory.ToString() == combo_Pendrive.Text)
-                {
-                    Txt_NomePendrive.Text = item.VolumeLabel.ToString();
-
-                    AtualizarLabels(item);
-                }
-            }
-        }
-
-        private void Btm_Reparar_Click(object sender, EventArgs e)
-        {
-
-            if (combo_Pendrive.Items.Count != 0)
-            {
-                if (PendriveAtual.IsReady)
-                {
-                    Ferramentas.RepararPendrive(PendriveAtual);
-
-                    MessageBox.Show("Processo finalizado com sucesso", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Insira um pendrive", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Insira um pendrive", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
     }
 }

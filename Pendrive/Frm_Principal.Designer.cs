@@ -71,10 +71,11 @@
             // 
             // button1
             // 
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 178);
+            this.button1.Location = new System.Drawing.Point(12, 183);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(168, 37);
             this.button1.TabIndex = 2;
@@ -93,7 +94,7 @@
             // 
             // panel1
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.Controls.Add(this.Btm_Reparar);
             this.panel1.Controls.Add(this.Lbl_Utilizado);
             this.panel1.Controls.Add(this.label6);
@@ -113,11 +114,12 @@
             // Btm_Reparar
             // 
             this.Btm_Reparar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btm_Reparar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.Btm_Reparar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btm_Reparar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Btm_Reparar.Location = new System.Drawing.Point(6, 174);
+            this.Btm_Reparar.Location = new System.Drawing.Point(26, 181);
             this.Btm_Reparar.Name = "Btm_Reparar";
-            this.Btm_Reparar.Size = new System.Drawing.Size(352, 37);
+            this.Btm_Reparar.Size = new System.Drawing.Size(334, 37);
             this.Btm_Reparar.TabIndex = 16;
             this.Btm_Reparar.Text = "Desinfectar Pendrive";
             this.Btm_Reparar.UseVisualStyleBackColor = true;
@@ -126,17 +128,17 @@
             // Lbl_Utilizado
             // 
             this.Lbl_Utilizado.AutoSize = true;
-            this.Lbl_Utilizado.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Utilizado.Location = new System.Drawing.Point(102, 82);
+            this.Lbl_Utilizado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Utilizado.Location = new System.Drawing.Point(127, 84);
             this.Lbl_Utilizado.Name = "Lbl_Utilizado";
-            this.Lbl_Utilizado.Size = new System.Drawing.Size(0, 15);
+            this.Lbl_Utilizado.Size = new System.Drawing.Size(0, 16);
             this.Lbl_Utilizado.TabIndex = 15;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 84);
+            this.label6.Location = new System.Drawing.Point(26, 85);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(101, 15);
             this.label6.TabIndex = 14;
@@ -145,17 +147,17 @@
             // Lbl_Livre
             // 
             this.Lbl_Livre.AutoSize = true;
-            this.Lbl_Livre.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Livre.Location = new System.Drawing.Point(81, 58);
+            this.Lbl_Livre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Livre.Location = new System.Drawing.Point(107, 58);
             this.Lbl_Livre.Name = "Lbl_Livre";
-            this.Lbl_Livre.Size = new System.Drawing.Size(0, 15);
+            this.Lbl_Livre.Size = new System.Drawing.Size(0, 16);
             this.Lbl_Livre.TabIndex = 13;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 58);
+            this.label4.Location = new System.Drawing.Point(26, 58);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 15);
             this.label4.TabIndex = 12;
@@ -164,17 +166,17 @@
             // Lbl_Nome
             // 
             this.Lbl_Nome.AutoSize = true;
-            this.Lbl_Nome.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Nome.Location = new System.Drawing.Point(44, 8);
+            this.Lbl_Nome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Nome.Location = new System.Drawing.Point(68, 8);
             this.Lbl_Nome.Name = "Lbl_Nome";
-            this.Lbl_Nome.Size = new System.Drawing.Size(0, 15);
+            this.Lbl_Nome.Size = new System.Drawing.Size(0, 16);
             this.Lbl_Nome.TabIndex = 11;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 8);
+            this.label2.Location = new System.Drawing.Point(26, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 15);
             this.label2.TabIndex = 10;
@@ -183,17 +185,17 @@
             // Lbl_TamanhoTotal
             // 
             this.Lbl_TamanhoTotal.AutoSize = true;
-            this.Lbl_TamanhoTotal.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_TamanhoTotal.Location = new System.Drawing.Point(92, 33);
+            this.Lbl_TamanhoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_TamanhoTotal.Location = new System.Drawing.Point(115, 32);
             this.Lbl_TamanhoTotal.Name = "Lbl_TamanhoTotal";
-            this.Lbl_TamanhoTotal.Size = new System.Drawing.Size(0, 15);
+            this.Lbl_TamanhoTotal.Size = new System.Drawing.Size(0, 16);
             this.Lbl_TamanhoTotal.TabIndex = 9;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 32);
+            this.label3.Location = new System.Drawing.Point(26, 33);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 15);
             this.label3.TabIndex = 8;
@@ -202,17 +204,17 @@
             // Lbl_SistemaDeArquivos
             // 
             this.Lbl_SistemaDeArquivos.AutoSize = true;
-            this.Lbl_SistemaDeArquivos.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_SistemaDeArquivos.Location = new System.Drawing.Point(124, 114);
+            this.Lbl_SistemaDeArquivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_SistemaDeArquivos.Location = new System.Drawing.Point(151, 113);
             this.Lbl_SistemaDeArquivos.Name = "Lbl_SistemaDeArquivos";
-            this.Lbl_SistemaDeArquivos.Size = new System.Drawing.Size(0, 15);
+            this.Lbl_SistemaDeArquivos.Size = new System.Drawing.Size(0, 16);
             this.Lbl_SistemaDeArquivos.TabIndex = 7;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 113);
+            this.label1.Location = new System.Drawing.Point(26, 114);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(121, 15);
             this.label1.TabIndex = 6;
@@ -222,19 +224,20 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(562, 242);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Txt_NomePendrive);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.combo_Pendrive);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Frm_Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Remover Vírus do Pendrive";
+            this.Text = "Remover Vírus do Pendrive (Atalhos)";
             this.Load += new System.EventHandler(this.Frm_Principal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
