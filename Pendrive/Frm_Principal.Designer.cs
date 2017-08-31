@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Principal));
             this.combo_Pendrive = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_Atualizar = new System.Windows.Forms.Button();
             this.Txt_NomePendrive = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Btm_Reparar = new System.Windows.Forms.Button();
@@ -69,19 +69,20 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // btn_Atualizar
             // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 183);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(168, 37);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Atualizar Lista";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_Atualizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Atualizar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btn_Atualizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.btn_Atualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Atualizar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Atualizar.Location = new System.Drawing.Point(12, 183);
+            this.btn_Atualizar.Name = "btn_Atualizar";
+            this.btn_Atualizar.Size = new System.Drawing.Size(168, 37);
+            this.btn_Atualizar.TabIndex = 2;
+            this.btn_Atualizar.Text = "Atualizar Lista";
+            this.btn_Atualizar.UseVisualStyleBackColor = true;
+            this.btn_Atualizar.Click += new System.EventHandler(this.btn_Atualizar_Click);
             // 
             // Txt_NomePendrive
             // 
@@ -114,6 +115,7 @@
             // Btm_Reparar
             // 
             this.Btm_Reparar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btm_Reparar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btm_Reparar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.Btm_Reparar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btm_Reparar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -228,7 +230,7 @@
             this.ClientSize = new System.Drawing.Size(562, 242);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Txt_NomePendrive);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_Atualizar);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.combo_Pendrive);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -251,7 +253,7 @@
 
         private System.Windows.Forms.ComboBox combo_Pendrive;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_Atualizar;
         private System.Windows.Forms.TextBox Txt_NomePendrive;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label Lbl_Livre;

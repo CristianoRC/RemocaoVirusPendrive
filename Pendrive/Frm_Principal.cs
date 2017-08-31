@@ -18,8 +18,10 @@ namespace Pendrive
             AtualizarComboBoxPendrives();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_Atualizar_Click(object sender, EventArgs e)
         {
+            combo_Pendrive.Items.Clear();
+
             AtualizarComboBoxPendrives();
         }
 
@@ -40,9 +42,39 @@ namespace Pendrive
 
         private void Btm_Reparar_Click(object sender, EventArgs e)
         {
-            if (combo_Pendrive.Items.Count != 0 && pendrive.Informacoes.IsReady)
+            reparar();
+        }
+
+        private void reparar()
+        {
+            if (combo_Pendrive.Items.Count != 0)
             {
-                pendrive.Reparar();
+                if (pendrive.Informacoes.IsReady)
+                {
+                    try
+                    {
+                        pendrive.Reparar();
+
+                        MessageBox.Show($"Pendrive reparado com sucesso!",
+                                        "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ocorreu um erro ao tentar reparar o pendrive: {ex.Message}",
+                                        "Erro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+
+                }
+                else
+                {
+                    var resutado = MessageBox.Show("Ocorreu um erro ao fazer a comunicação com o pendrive!, verifique o pendrive e tente novamente!",
+                         "Erro", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+
+                    if (resutado == DialogResult.Retry)
+                    {
+                        reparar();
+                    }
+                }
             }
             else
             {

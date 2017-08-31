@@ -11,9 +11,7 @@ namespace Pendrive
 
         public void Reparar()
         {
-            var rotulo = Ferramentas.SepararRotulo(Informacoes.RootDirectory.ToString());
-
-            var comandos = obterComandos(rotulo);
+            var comandos = obterComandos(Informacoes.RootDirectory.ToString());
 
             foreach (var cmd in comandos)
             {
@@ -21,7 +19,8 @@ namespace Pendrive
                 {
                     FileName = "cmd.exe",
                     WindowStyle = ProcessWindowStyle.Hidden,
-                    Arguments = cmd
+                    Arguments = cmd,
+                    UseShellExecute = false
                 };
 
                 Process.Start(processo).WaitForExit();
@@ -44,12 +43,12 @@ namespace Pendrive
             return ListaDePendrives;
         }
 
-        static IEnumerable<string> obterComandos(char DiretorioPendrivre)
+        static IEnumerable<string> obterComandos(string DiretorioPendrivre)
         {
             return new List<string>
             {
-                $@"attrib -h -r -s /s /d {DiretorioPendrivre}:\*.*",
-                $@"del {DiretorioPendrivre}:\*.lnk .vbs. .js .com /f /q"
+                $@"/C attrib -h -r -s /s /d {DiretorioPendrivre}*.*",
+                $@"/C del {DiretorioPendrivre}*.lnk .vbs. .js .com /f /q"
             };
         }
     }
